@@ -12,147 +12,191 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .navbar {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #e94560, #ff6b9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-link:not(.dropdown-toggle)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -8px;
-            left: 0;
-            background: linear-gradient(135deg, #e94560, #ff6b9d);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:not(.dropdown-toggle):hover::after {
-            width: 100%;
-        }
-
-        .dropdown-menu {
-            border-radius: 12px;
-            border: none;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .dropdown-header {
-            background-color: #1a1a2e;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .dropdown-item {
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #e94560;
-            padding-left: 2rem;
-        }
-
-        .logout-form {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand-custom {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand-custom:hover {
+            transform: scale(1.05);
+            color: #fff;
+        }
+
+        .navbar-brand-custom i {
+            color: #e94560;
+        }
+
+        /* Navigation Links */
+        .nav-link-custom {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .nav-link-custom:hover {
+            color: #fff !important;
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Logout Button */
         .logout-btn {
-            width: 100%;
-            background-color: #ff6b6b;
-            color: white;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%) !important;
+            color: white !important;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 8px;
             border: none;
-            padding: 0.5rem 1rem;
-            text-align: left;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 5px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
         }
 
         .logout-btn:hover {
-            background-color: #ff5252;
-            color: white;
-            padding-left: 2rem;
+            background: linear-gradient(135deg, #ff5252 0%, #ff3838 100%) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 82, 82, 0.4);
+            color: white !important;
+        }
+
+        .logout-btn:active {
+            transform: translateY(0);
+        }
+
+        /* User Info */
+        .user-info {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 5px;
+        }
+
+        .user-info i {
+            color: #e94560;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(26, 26, 46, 0.98);
+                padding: 1rem;
+                border-radius: 0 0 15px 15px;
+                margin-top: 10px;
+            }
+
+            .nav-link-custom,
+            .logout-btn,
+            .user-info {
+                margin: 5px 0;
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-shopping-bag"></i> E-Commerce
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand-custom" href="#">
+                <i class="fas fa-shopping-bag"></i>
+                <span>E-Commerce</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-4">
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Categories -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categories.index') }}">
-                            <i class="fas fa-list"></i> Categories
+                        <a class="nav-link-custom" href="{{ route('categories.index') }}">
+                            <i class="fas fa-list"></i>
+                            <span>Categories</span>
                         </a>
                     </li>
+
+                    <!-- Products -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">
-                            <i class="fas fa-box"></i> Products
+                        <a class="nav-link-custom" href="{{ route('products.index') }}">
+                            <i class="fas fa-box"></i>
+                            <span>Products</span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <!-- User Info -->
+                    <li class="nav-item">
+                        <div class="user-info">
                             <i class="fas fa-user-circle"></i>
-                            <span>Account</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li>
-                                <h6 class="dropdown-header">
-                                    {{ auth()->user()->name ?? 'Welcome' }}
-                                </h6>
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-heart me-2"></i>Wishlist</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}" class="logout-form">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item logout-btn">
-                                        <i class="fas fa-sign-out-alt me-2"></i>Log Out
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
+                            <span>{{ auth()->user()->name ?? 'Guest' }}</span>
+                        </div>
+                    </li>
+
+                    <!-- Logout Button -->
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}" style="margin: 0; display: inline;">
+                            @csrf
+                            <button type="submit" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <!-- Main Content -->
+    <div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
         @yield('content')
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
