@@ -73,7 +73,7 @@
             <label class="form-label">Current Images</label>
             <div class="d-flex flex-wrap gap-2">
                 @foreach($product->getMedia('product_images') as $image)
-                <img src="{{ $image->getUrl() }}"
+                <img src="{{ asset('storage/' . $image->id . '/' . $image->file_name) }}"
                     width="100"
                     height="100"
                     class="rounded border"

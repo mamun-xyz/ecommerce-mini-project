@@ -20,7 +20,7 @@
     @if($product->getMedia('product_images')->count())
     @foreach($product->getMedia('product_images') as $image)
     <div class="col-md-3 mb-3">
-        <img src="{{ $image->getUrl() }}"
+        <img src="{{ asset('storage/' . $image->id . '/' . $image->file_name) }}"
             class="img-fluid rounded border"
             style="object-fit: cover; height: 150px; width: 100%;">
     </div>
@@ -31,6 +31,7 @@
     </div>
     @endif
 </div>
+
 
 <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Back</a>
 @endsection

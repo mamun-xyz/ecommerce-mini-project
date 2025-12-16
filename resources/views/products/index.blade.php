@@ -27,9 +27,13 @@
             {{-- Image Preview --}}
             <td>
                 @if($product->getMedia('product_images')->count())
-                <img src="{{ $product->getFirstMediaUrl('product_images') }}"
+                @php
+                $firstImage = $product->getMedia('product_images')->first();
+                @endphp
+                <img src="{{ asset('storage/' . $firstImage->id . '/' . $firstImage->file_name) }}"
                     alt="{{ $product->product_name }}"
-                    width="50" height="50"
+                    width="50"
+                    height="50"
                     style="object-fit: cover; border-radius: 5px;">
                 @else
                 <span class="text-muted">No Image</span>
@@ -39,7 +43,7 @@
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->product_id }}</td>
             <td>{{ $product->category->name }}</td>
-            <td>${{ $product->price }}</td>
+            <td>{{ $product->price }}</td>
             <td>{{ $product->quantity }}</td>
             <td>
                 <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">View</a>
