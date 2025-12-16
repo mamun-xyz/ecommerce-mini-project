@@ -282,14 +282,6 @@ After running the application, you need to create a user account:
 
 ---
 
-## 📞 Contact
-
-For any queries or support:
-
--   **WhatsApp**:017551139
-
----
-
 ## 📄 License
 
 This project is created as a technical assessment and is for demonstration purposes only.
